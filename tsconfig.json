@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "es2016" /* Especifica a versão ES que será gerada */,
+
+    /* Modules */
+    "module": "ESNext" /* Use ESNext para habilitar import/export */,
+    "moduleResolution": "node" /* Resolve os módulos como Node.js */,
+    "outDir": "./dist" /* Saída para os arquivos JavaScript compilados */,
+    "rootDir": "./src" /* Diretório onde estão os arquivos TypeScript */,
+
+    /* TypeScript Interoperability */
+    "esModuleInterop": true /* Permite compatibilidade com CommonJS */,
+    "forceConsistentCasingInFileNames": true /* Garante que os nomes dos arquivos sejam consistentes */,
+
+    /* Type Checking */
+    "strict": true /* Habilita todas as opções de verificação estrita */,
+    "skipLibCheck": true /* Ignora verificação dos arquivos d.ts para acelerar compilação */,
+
+    /* Source Maps (Opcional) */
+    "sourceMap": true /* Cria arquivos source map */,
+    "inlineSources": true /* Inclui os arquivos TypeScript nos source maps */
+  },
+  "include": ["src/**/*"] /* Inclui todos os arquivos dentro da pasta src */,
+  "exclude": ["node_modules"] /* Exclui a pasta node_modules */
+}

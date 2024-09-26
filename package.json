@@ -1,13 +1,14 @@
 {
   "name": "desafio_auth",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js"
   },
+  
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -17,10 +18,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.1",
     "eslint": "^9.11.1",
     "globals": "^15.9.0",
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3",
+    "typescript": "^5.6.2",
     "typescript-eslint": "^8.7.0"
   }
 }
