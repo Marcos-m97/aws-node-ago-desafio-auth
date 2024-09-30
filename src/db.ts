@@ -14,7 +14,7 @@ async function connectDB() {
     console.log('Conectou!')
     connection.release()
   } catch (err) {
-    console.error('Erro ao conectar ao banco de dados:', err)
+    console.error('Erro ao conectar ao banco de dados:')
   }
 }
 
