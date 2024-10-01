@@ -1,6 +1,8 @@
-
+// import o mysql2 com suporte a promisses
 import mysql from 'mysql2/promise'
 
+
+// crio a pool com as credenciais do .env
 const conn = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -8,6 +10,7 @@ const conn = mysql.createPool({
   database: process.env.DB_NAME
 })
 
+//crinado a funçao assync de conexao
 async function connectDB() {
   try {
     const connection = await conn.getConnection()
