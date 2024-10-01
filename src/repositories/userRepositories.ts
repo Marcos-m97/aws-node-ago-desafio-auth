@@ -17,7 +17,7 @@ const userRepo = {
         'INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)'
       await conn.query(qry, [user.id, user.name, user.email, user.password])
     } catch (err) {
-      throw new Error('Erro ao criar usuaro')
+      throw new Error('Erro ao criar usuario')
     }
   },
 

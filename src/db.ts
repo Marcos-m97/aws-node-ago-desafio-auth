@@ -11,18 +11,14 @@ const conn = mysql.createPool({
 })
 
 //crinado a funçao assync de conexao
-async function connectDB() {
+export async function connectDB() {
   try {
     const connection = await conn.getConnection()
     console.log('Conectou!')
     connection.release()
   } catch (err) {
-    console.error('Erro ao conectar ao banco de dados:')
+    throw new Error ("internal server error")
   }
 }
-
-// Chama a função de conexão
-connectDB()
-
 
 export default conn

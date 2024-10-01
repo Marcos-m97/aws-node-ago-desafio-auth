@@ -5,6 +5,7 @@ import 'dotenv/config'
 import express, { Request, Response, NextFunction } from 'express'
 import AppErrors from './uteis/errors.js'
 import router from './routes/userRoutes.js'
+import { connectDB } from './db.js'
 
 //instanciando o express
 const app = express()
@@ -34,7 +35,20 @@ app.use(function (
     res.status(500).json({ error: 'internal server error' })
   }
 })
-//conexao com o servidor
-app.listen(port, function () {
-  console.log(`Servidor rodando na porta ${port}`)
-})
+
+
+async function startServer() {
+  try {
+// espera a conexao com o banco de dados para depois inciar o servidor
+    await connectDB()
+    //conexao com o servidor
+    app.listen(port, function () {
+      console.log(`Servidor rodando na porta ${port}`)
+    })
+  } catch (err) {
+    throw err
+  }
+}
+
+// chamo a funçao para iniciar a conexao com o poll do db e iniciar o servidor
+startServer()
