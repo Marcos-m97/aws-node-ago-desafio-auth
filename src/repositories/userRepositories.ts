@@ -10,7 +10,7 @@ class UserRepositorie {
         'INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)'
       await conn.query(qry, [user.id, user.name, user.email, user.password])
     } catch (err) {
-      throw new Error('Erro ao criar usuario')
+      throw new Error
     }
   }
   // funçao que interage com o DB e verifica se ja existe um usuario cadastrado
@@ -27,10 +27,46 @@ let result = data[0]
         return rows[0]
       } else return null
     } catch (err) {
-      console.log(err)
-      throw new Error('Erro ao verificar email')
+      throw err
     }
   }
 }
 
 export default UserRepositorie
+
+
+
+/*
+com sequelize:
+import { User } from '../models/user'; // Importando o model do Sequelize
+
+class UserRepository {
+  // Método para criar um novo usuário
+
+  public async create(userData: Partial<User>): Promise<User> {
+    try {
+      // Usamos o método `create` do Sequelize, que cria o registro no banco de dados
+      const user = await User.create(userData);
+      return user;
+    } catch (err) {
+      throw new Error('Erro ao criar usuário');
+    }
+  }
+
+  // Método para verificar se o email já está cadastrado
+  public async checkEmail(email: string): Promise<User | null> {
+    try {
+      // Usamos o `findOne` do Sequelize para encontrar um usuário pelo email
+      const user = await User.findOne({ where: { email } });
+      return user;
+    } catch (err) {
+      console.log(err);
+      throw new Error('Erro ao verificar email');
+    }
+  }
+}
+
+export default UserRepository;
+
+
+*/

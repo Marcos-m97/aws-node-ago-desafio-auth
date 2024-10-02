@@ -2,10 +2,10 @@
 import 'dotenv/config'
 
 // importanto o express/  req,res e next para mo middlewere para tratamento de erros personalizado
-import express, { Request, Response, NextFunction } from 'express'
-import AppErrors from './uteis/errors.js'
+import express from 'express'
 import router from './routes/userRoutes.js'
 import { connectDB } from './db.js'
+import errorMiddlewere from './middleweres/apperrors.js'
 
 //instanciando o express
 const app = express()
@@ -20,23 +20,7 @@ app.use(express.json())
 app.use('/api/v1/users', router)
 
 // midlewere de tratamento dos erros. este é um midlewere especial que contem 4 parametros. o extre é o Error.
-app.use(function (
-  error: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  // verifico se error é uma instancia de classe errors, criado no arquivo uteis
-  // as instancias da classe apperrors sao incializadas no service atrave dos throws new
-  if (error instanceof AppErrors) {
-    //se for ela tem acesso as propriedades que eu defini na classe code e message.
-    res.status(error.code).json({ error: error.message })
-    return
-  } else {
-    console.log(error)
-    res.status(500).json({ error: 'internal server error'})
-  }
-})
+app.use(errorMiddlewere)
 
 async function startServer() {
   try {

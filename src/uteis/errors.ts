@@ -7,5 +7,4 @@ class AppErrors {
     this.code = code
   }
 }
-
 export default AppErrors
