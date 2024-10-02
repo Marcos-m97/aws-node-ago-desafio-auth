@@ -1,10 +1,10 @@
 import conn from '../db.js'
-import { userType } from '../models/user.js'
+import { User } from '../models/user.js'
 
 // objeto que contem a logica do repository
-class userRepo {
+class UserRepositorie {
   //aqui a func create tem como parametro o user, sera passado pelo service qunado esta funçao  for chamada la
-  async create(user: userType): Promise<any> {
+  async create(user: User): Promise<any> {
     try {
       const qry: string =
         'INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)'
@@ -14,7 +14,7 @@ class userRepo {
     }
   }
   // funçao que interage com o DB e verifica se ja existe um usuario cadastrado
-  async checkEmail(email: string): Promise<userType| null> {
+  async checkEmail(email: string): Promise<User| null> {
     try {
       const verifyEmail: string = 'SELECT * FROM users WHERE email = ?'
       /*é equivalente a fazer:
@@ -33,4 +33,4 @@ let result = data[0]
   }
 }
 
-export default new userRepo()
+export default UserRepositorie
