@@ -37,10 +37,9 @@ app.use(function (
   }
 })
 
-
 async function startServer() {
   try {
-// espera a conexao com o banco de dados para depois inciar o servidor
+    // espera a conexao com o banco de dados para depois inciar o servidor
     await connectDB()
     //conexao com o servidor
     app.listen(port, function () {

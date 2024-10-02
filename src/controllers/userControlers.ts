@@ -3,8 +3,7 @@ import userService from '../services/UserService.js'
 import { userType } from '../models/user.js'
 
 
-
-const userControler = {
+class userControler {
   async registerUser(req: Request, res: Response, next: NextFunction):Promise<any> {
     try {
 
@@ -23,4 +22,4 @@ const userControler = {
   }
 }
 
-export default userControler
+export default new userControler()
