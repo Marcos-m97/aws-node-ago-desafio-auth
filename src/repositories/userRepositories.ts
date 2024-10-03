@@ -35,7 +35,7 @@ let result = data[0]
 export default UserRepositorie
 
 
-
+// tem que arrumar este exeplo ele esta usando o patial o que nao precisa pois o meu id e opcional e ele naoesta usando a classe user e sim um objeto userdata q ele criou
 /*
 com sequelize:
 import { User } from '../models/user'; // Importando o model do Sequelize
