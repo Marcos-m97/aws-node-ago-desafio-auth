@@ -1,3 +1,4 @@
+// classe para instanciar os erros personalizados que serao capturados pelo middlewere
 class AppErrors {
  public message: string
  public code: number

@@ -1,8 +1,8 @@
-import  { Request, Response ,NextFunction } from "express";
-import AppErrors from "../uteis/errors";
+import  { Request, Response, NextFunction } from "express";
+import AppErrors from "../uteis/errors.js";
 
 
- let errorMiddlewere = function(error: Error,req: Request,res: Response,next: NextFunction) {
+ let errorMiddlewere = function(error: Error, req: Request, res: Response, next: NextFunction) {
   // verifico se error é uma instancia de classe errors, criado no arquivo uteis
   // as instancias da classe apperrors sao incializadas no service atrave dos throws new
   if (error instanceof AppErrors) {
@@ -10,7 +10,6 @@ import AppErrors from "../uteis/errors";
     res.status(error.code).json({ error: error.message })
     return
   } else {
-    console.log(error)
     res.status(500).json({ error: 'internal server error' })
   }
 }

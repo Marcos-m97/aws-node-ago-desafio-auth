@@ -21,13 +21,11 @@ class UserService {
     this.userRepo = userRepo;
   }
 
-
-
   // a funçao é assync e recebe como parametro um objeto do tipo usser, esse objeto vem do contoler
   // a funçao retorna uma promise que pode ser do tipo user,se retornar algo, ou any se rornar erros
   // validUser  é um método da classe User criada no model e  cuida das validaçoes mais simples e tem as regez do email e senha e lança os new errors com exeçao
   // do double email que faz uma consulta ao banco.
-  public async createUser({ name,email,password}: User): Promise<any | User> {
+  public async createUser({name,email,password}: User): Promise<any | User> {
 
     // verifica as validaçoes que contem a instancia dos erros personalizdos capturados pelo midlewere de erros
     validUser(name, email, password)
