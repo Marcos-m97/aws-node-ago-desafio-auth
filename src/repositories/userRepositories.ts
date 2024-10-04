@@ -10,7 +10,7 @@ class UserRepositorie {
         'INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)'
       await conn.query(qry, [user.id, user.name, user.email, user.password])
     } catch (err) {
-      throw new Error
+      throw (err)
     }
   }
   // funçao que interage com o DB e verifica se ja existe um usuario cadastrado

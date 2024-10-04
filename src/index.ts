@@ -1,6 +1,4 @@
-// importando o dotenv com as credenciais do DB
 import 'dotenv/config'
-
 // importanto o express/  req,res e next para mo middlewere para tratamento de erros personalizado
 import express from 'express'
 import router from './routes/userRoutes.js'
@@ -11,7 +9,7 @@ import errorMiddlewere from './middleweres/apperrors.js'
 const app = express()
 
 // definindo a porta
-const port = 3000
+const port = process.env.PORT
 
 // midllewere body-parser
 app.use(express.json())
@@ -35,5 +33,4 @@ async function startServer() {
   }
 }
 
-// chamo a funçao para iniciar a conexao com o poll do db e iniciar o servidor
 startServer()
