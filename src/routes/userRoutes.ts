@@ -9,11 +9,12 @@ const router = Router()
 // instanciando as classes DI
 const userRepo = new UserRepositorie()
 const userServ = new UserService(userRepo)
-const userControler = new UserControler(userServ)
+
+// o userControl instancia um novo controler e é injetado no serv. a instancia do control inicia a rota aqui embaixo
+const userControl = new UserControler(userServ)
 
 //rota para criar usuaio com arro function- esta sintaxe é para bindar o this de forma coreta utilizando as DI
-router.post('/add', (req, res, next) =>
-  userControler.registerUser(req, res, next)
-)
+router.post('/add', (req, res, next) => userControl.registerUser(req, res, next))
+
 
 export default router

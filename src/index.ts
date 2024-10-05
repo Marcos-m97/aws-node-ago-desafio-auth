@@ -1,7 +1,7 @@
 import 'dotenv/config'
 // importanto o express/  req,res e next para mo middlewere para tratamento de erros personalizado
 import express from 'express'
-import router from './routes/userRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 import { connectDB } from './db.js'
 import errorMiddlewere from './middleweres/apperrors.js'
 
@@ -15,7 +15,7 @@ const port = process.env.PORT
 app.use(express.json())
 
 //midlewere das rotas
-app.use('/api/v1/users', router)
+app.use('/api/v1/users', userRoutes)
 
 // midlewere de tratamento dos erros. este é um midlewere especial que contem 4 parametros. o extre é o Error.
 app.use(errorMiddlewere)

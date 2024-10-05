@@ -15,7 +15,6 @@ import { validUser } from '../uteis/validFunctions.js'
 // objeto que contem a logica dos serrvices
 class UserService {
   private userRepo: userRepositorie
-
   constructor(userRepo: userRepositorie) {
     this.userRepo = userRepo
   }
