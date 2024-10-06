@@ -14,7 +14,7 @@ class LoginControler {
     req: Request,
     res: Response,
     next: NextFunction
-  ): Promise<any> {
+  ): Promise<Response|void> {
     try {
       // Pegando o req.body. Obs vou inserir ID pelo service com o uuid
 
@@ -25,7 +25,7 @@ class LoginControler {
       // aqui a varivael autent guarda o valor do retorno da função  authenticateUser do service, isso porque eu defini o rotorno la.
       const autent = await this.loginServ.authenticateUser(loginData)
 
-      return res.status(200).json({ token: "oi" })
+      return res.status(200).json(autent)
       // em caso de erro o cathc captura o erro e passa através do next para o midlewere de validaçao de erros
     } catch (error) {
       next(error)

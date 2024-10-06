@@ -1,4 +1,5 @@
-import 'dotenv/config'
+import dotenv from 'dotenv'
+dotenv.config()
 // importanto o express/  req,res e next para mo middlewere para tratamento de erros personalizado
 import express from 'express'
 import userRoutes from './routes/userRoutes.js'

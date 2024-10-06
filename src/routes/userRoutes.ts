@@ -3,6 +3,7 @@ import { Router } from 'express'
 import UserRepositorie from '../repositories/userRepositories.js'
 import UserService from '../services/UserService.js'
 import UserControler from '../controllers/userControlers.js'
+import authenticateToken from '../middleweres/authMiddlewere'
 // instanciando o router
 const router = Router()
 
@@ -14,7 +15,14 @@ const userServ = new UserService(userRepo)
 const userControl = new UserControler(userServ)
 
 //rota para criar usuaio com arro function- esta sintaxe é para bindar o this de forma coreta utilizando as DI
-router.post('/add', (req, res, next) => userControl.registerUser(req, res, next))
+//router.post('/add', (req, res, next) => userControl.registerUser(req, res, next))
 
+router.post('/add', authenticateToken, async (req, res, next) => {
+  try {
+    await userControl.registerUser(req, res, next)
+  } catch (error) {
+    next(error)
+  }
+})
 
 export default router

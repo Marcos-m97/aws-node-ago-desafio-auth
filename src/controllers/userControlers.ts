@@ -16,7 +16,7 @@ class UserControler {
     req: Request,
     res: Response,
     next: NextFunction
-  ): Promise<any> {
+  ): Promise<Response|void> {
     try {
       // Pegando o req.body. Obs vou inserir ID pelo service com o uuid
 
