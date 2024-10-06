@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt'
 import AppErrors from '../uteis/errors.js'
 
 // aqui importo a interface UserIput do repositorie para nao ter que reescreve-la e  a classe User para instanciala aqui
-import userRepositorie from '../repositories/userRepositories.js'
+import UserRepositorie from '../repositories/userRepositories.js'
 // aqui tambem utilizo a interface para tipar os dados da funçao createUser com as regras de negocio
 import { User, userInput } from '../models/user.js'
 
@@ -14,8 +14,8 @@ import { validUser } from '../uteis/validFunctions.js'
 
 // objeto que contem a logica dos serrvices
 class UserService {
-  private userRepo: userRepositorie
-  constructor(userRepo: userRepositorie) {
+  private userRepo: UserRepositorie
+  constructor(userRepo: UserRepositorie) {
     this.userRepo = userRepo
   }
 

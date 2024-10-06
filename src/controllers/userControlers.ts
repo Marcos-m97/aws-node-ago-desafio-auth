@@ -30,7 +30,7 @@ class UserControler {
 
       return res.status(201).json({ id: new_user.id })
       // em caso de erro o cathc captura o erro e passa através do next para o midlewere de validaçao de erros
-    } catch (error: any) {
+    } catch (error) {
       next(error)
     }
   }
