@@ -1,34 +1,39 @@
+import 'dotenv/config'
+import { User } from '../models/user'
 import bcrypt from 'bcrypt'
-import 'dotenv/config' // Para carregar as variáveis do .env
+import conn from '../db'
 
 // Função de seed para criar o usuário padrão
-const seedUser = async (): Promise<void> => {
-  try {
-    // Verifica se o usuário com o email padrão já existe
-    const existingUser = await User.findOne({
-      email: process.env.DEFAULT_EMAIL
-    })
+export async function createSeed(): Promise<User | undefined> {
+  const saltRounds = 10
+  const hashedPassword = await bcrypt.hash(process.env.PASSWPORD!, saltRounds)
 
-    if (!existingUser) {
-      // Se o usuário não existir, cria um novo usuário com a senha criptografada
-      const hashedPassword = await bcrypt.hash(
-        process.env.DEFAULT_PASSWORD as string,
-        10
-      )
+  const seedUser = new User(
+    process.env.DEFAULT_NAME!,
+    process.env.DEFAULT_EMAIL!,
+    hashedPassword!,
+    process.env.DEFAULT_ID!
+  )
 
-      const user = new User({
-        email: process.env.DEFAULT_EMAIL,
-        password: hashedPassword
-      })
-
-      await user.save()
-      console.log('Usuário padrão criado')
-    } else {
-      console.log('Usuário padrão já existe')
+  const verifyEmail: string = 'SELECT * FROM users WHERE email = ?'
+  const [rows, fields] = await conn.query<any>(verifyEmail, [seedUser.email])
+  if (rows.length > 0) {
+    console.log('seed ja registrada, prossiga')
+  } else {
+    try {
+      const qry: string =
+        'INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)'
+      await conn.query(qry, [
+        seedUser.id,
+        seedUser.name,
+        seedUser.email,
+        seedUser.password
+      ])
+      return seedUser
+    } catch (err) {
+      throw err
     }
-  } catch (error) {
-    console.error('Erro ao criar seed de usuário:', error)
   }
 }
 
-export default seedUser
+export default createSeed

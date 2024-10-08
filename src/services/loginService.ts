@@ -1,6 +1,5 @@
 import 'dotenv/config'
 import { loginInput } from '../models/loginData'
-import LoginRepositorie from '../repositories/loginRepositories'
 import UserRepositorie from '../repositories/userRepositories'
 import AppErrors from '../uteis/errors'
 import { comparePassword } from '../uteis/loginFunctions'
@@ -13,11 +12,8 @@ type AuthResponse = {
 }
 // aqui ingetei o UserRepositorie pois é de la que vou pegar as infos do banco que preciso aqui por isso ainda nao utilize o loginrepo
 class LoginService {
-  private loginRepo: LoginRepositorie
   private userRepo: UserRepositorie
-
-  constructor(loginRepo: LoginRepositorie, userRepo: UserRepositorie) {
-    this.loginRepo = loginRepo
+  constructor(userRepo: UserRepositorie) {
     this.userRepo = userRepo
   }
 

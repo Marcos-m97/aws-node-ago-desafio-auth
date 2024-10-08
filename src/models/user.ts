@@ -5,7 +5,6 @@ export type userInput = {
   name: string
   email: string
   password: string
-  checkPassword: string
 }
 
 // interface para definir os tipos das entradas

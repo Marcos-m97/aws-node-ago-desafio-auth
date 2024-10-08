@@ -24,15 +24,9 @@ class UserService {
   // validUser é uma funçao da pasta uteis. ela cuida das validaçoes mais simples e tem as regex do email e senha e lança os new errors com exeçao
   // do double email que faz uma consulta ao banco.
   //recapitulando: a createuser recebe o userdata ou seja o req.boy que é do tipo userinput e retorna uma promisse resolvida com usuario do tipo USER ou any se der algum erro ou cair em alguma validação
-  public async createUser(userData:userInput): Promise<any | User> {
-
+  public async createUser(userData: userInput): Promise<any | User> {
     // verifica as validaçoes que contem a instancia dos erros personalizdos capturados pelo midlewere de erros
-    validUser(
-      userData.name,
-      userData.email,
-      userData.password,
-      userData.checkPassword
-    )
+    validUser(userData.name, userData.email, userData.password)
 
     // doubleEmail guarda o retorno da checkemail
     try {
@@ -71,7 +65,6 @@ class UserService {
 }
 
 export default UserService
-
 
 /*
 import { User } from '../models/User';

@@ -5,6 +5,7 @@ import express from 'express'
 import userRoutes from './routes/userRoutes.js'
 import { connectDB } from './db.js'
 import errorMiddlewere from './middleweres/apperrors.js'
+import createSeed from './seeds/seed.js'
 
 //instanciando o express
 const app = express()
@@ -25,6 +26,7 @@ async function startServer() {
   try {
     // espera a conexao com o banco de dados para depois inciar o servidor
     await connectDB()
+     await createSeed()
     //conexao com o servidor
     app.listen(port, function () {
       console.log(`Servidor rodando na porta ${port}`)

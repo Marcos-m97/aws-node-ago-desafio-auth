@@ -17,7 +17,6 @@ export function validUser(
   userName: string,
   userEmail: string,
   userPassword: string,
-  confirmPassWord: string
 ): void {
   if (!userName) {
     // o controler cria novas instancias dos erros, o contoler pega esses erros e envia para o midlewere de erros no index
@@ -38,8 +37,9 @@ export function validUser(
       400
     )
   }
-
-  if (!confirmPassWord || confirmPassWord != userPassword) {
+}
+  /*if (!confirmPassWord || confirmPassWord != userPassword) {
     throw new AppErrors('password dont mach confirmation', 400)
   }
-}
+    */
+
