@@ -1,8 +1,8 @@
 import 'dotenv/config'
-import { loginInput } from '../models/loginData'
-import UserRepositorie from '../repositories/userRepositories'
-import AppErrors from '../uteis/errors'
-import { comparePassword } from '../uteis/loginFunctions'
+import { loginInput } from '../models/loginData.js'
+import UserRepositorie from '../repositories/userRepositories.js'
+import AppErrors from '../uteis/errors.js'
+import { comparePassword } from '../uteis/loginFunctions.js'
 import jwt from 'jsonwebtoken'
 
 // aqui defini o tipo para o tipo da resposta da função authenticateUser que vou devolver para o contoler imprimir como json

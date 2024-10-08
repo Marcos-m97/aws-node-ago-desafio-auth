@@ -6,7 +6,7 @@ import userRoutes from './routes/userRoutes.js'
 import { connectDB } from './db.js'
 import errorMiddlewere from './middleweres/apperrors.js'
 import createSeed from './seeds/seed.js'
-
+import loginRouter from './routes/loginRoutes.js'
 //instanciando o express
 const app = express()
 
@@ -18,6 +18,7 @@ app.use(express.json())
 
 //midlewere das rotas
 app.use('/api/v1/users', userRoutes)
+app.use('/api/v1/login', loginRouter)
 
 // midlewere de tratamento dos erros. este é um midlewere especial que contem 4 parametros. o extre é o Error.
 app.use(errorMiddlewere)

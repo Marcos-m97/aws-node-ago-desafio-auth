@@ -1,12 +1,15 @@
 import 'dotenv/config'
-import { User } from '../models/user'
+import { User } from '../models/user.js'
 import bcrypt from 'bcrypt'
-import conn from '../db'
+import conn from '../db.js'
 
 // Função de seed para criar o usuário padrão
 export async function createSeed(): Promise<User | undefined> {
   const saltRounds = 10
-  const hashedPassword = await bcrypt.hash(process.env.PASSWPORD!, saltRounds)
+  const hashedPassword = await bcrypt.hash(
+    process.env.DEFAULT_PASSWORD!,
+    saltRounds
+  )
 
   const seedUser = new User(
     process.env.DEFAULT_NAME!,

@@ -3,7 +3,7 @@ import { Router } from 'express'
 import UserRepositorie from '../repositories/userRepositories.js'
 import UserService from '../services/UserService.js'
 import UserControler from '../controllers/userControlers.js'
-import authenticateToken from '../middleweres/authMiddlewere'
+import authenticateToken from '../middleweres/authMiddlewere.js'
 // instanciando o router
 const router = Router()
 
